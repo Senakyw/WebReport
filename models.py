@@ -1,16 +1,11 @@
-from pyexpat import model
-from random import choices
-from tkinter import CASCADE
-from unittest.util import _MAX_LENGTH
 from django.db import models
-from django.utils import timezone
 
 class User(models.Model):
-    Jobs = [] #liste à remplir
+    Jobs = []
     job = models.CharField(choices = Jobs)
 
 class Projet(models.Model):
-    manager = models.ForeignKey(user, on_delete = models.CASCADE, related_name = "manager of")
+    manager = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "manager of")
     label = models.CharField(max_length = 4)
     title = models.CharField(max_length=64)
     description = models.TextField()
